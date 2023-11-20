@@ -4,7 +4,7 @@ import java.util.Scanner;
 
 import static hexlet.code.games.Even.playEven;
 import static hexlet.code.games.Calc.playCalc;
-import static hexlet.code.GlobalVar.userName;
+import static hexlet.code.GlobalVar.USERNAME;
 
 public class App {
     public static void main(String[] args) {
@@ -18,7 +18,7 @@ public class App {
             System.out.println();
             greetingUser();
             playEven();
-        } else if(userChoice.equals("3")) {
+        } else if (userChoice.equals("3")) {
             System.out.println("Your choice: " + userChoice);
             System.out.println();
             greetingUser();
@@ -42,7 +42,7 @@ public class App {
     public static void greetingUser() {
         System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
-        System.out.println("Hello, " + userName + "!");
+        System.out.println("Hello, " + USERNAME + "!");
     }
 
 }
