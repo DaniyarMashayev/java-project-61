@@ -1,7 +1,7 @@
 package hexlet.code.games;
 
 import java.util.Random;
-import static hexlet.code.GlobalVar.userName;
+import static hexlet.code.GlobalVar.USERNAME;
 import static hexlet.code.Engine.playGame;
 
 public class Calc {
@@ -15,12 +15,11 @@ public class Calc {
             String numberStr = String.valueOf(number1) + " " + operator + " " + String.valueOf(number2);
             String result = playGame(numberStr);
             if (result.equals("wrong")) {
-                System.out.println("Let's try again, " + userName + "!");
+                System.out.println("Let's try again, " + USERNAME + "!");
                 return;
-            } else if (result.equals("correct")) {
+            }
         }
-        }
-        System.out.println("Congratulations, " + userName + "!");
+        System.out.println("Congratulations, " + USERNAME + "!");
     }
 
     public static String checkAnswer(String number) {
