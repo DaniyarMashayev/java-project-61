@@ -15,14 +15,15 @@ public class Engine {
         String answer = null;
         if (number.length() < 3) {
             answer = checkAnswer(number, userAnswer);
-        } else if(number.length() > 3) {
+        } else if (number.length() > 3) {
             answer = checkAnswer(number);
         }
         if (answer.equals(userAnswer)) {
             System.out.println("Correct!");
             result = "correct";
         } else if (!answer.equals(userAnswer)) {
-            System.out.println("'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was " + "'" + answer + "'");
+            System.out.println("'" + userAnswer + "'" + " is wrong answer ;(. Correct answer was "
+                    + "'" + answer + "'");
             result = "wrong";
         }
         return result;
