@@ -4,3 +4,4 @@
 [![Test Coverage](https://api.codeclimate.com/v1/badges/06f06ddcdf7e7b63f510/test_coverage)](https://codeclimate.com/github/DaniyarMashayev/java-project-61/test_coverage)
 https://asciinema.org/a/xNIW7CJOkeWgd7OFWcqMEC0oe                           <!--Игра: Проверка на четность-->
 https://asciinema.org/a/r0uKh4SsYz40tQTSRdeTz75Ts                           <!--Игра: Калькулятор-->
+https://asciinema.org/a/RxDgWxZtHOHPDpPlWGGnoM3AX                           <!--Игра: НОД-->
