@@ -1,27 +1,9 @@
 package hexlet.code.games;
 
-import java.util.Random;
-import static hexlet.code.Engine.playGame;
-import static hexlet.code.GlobalVar.USERNAME;
 public class Even {
-    public static void playEven() {
-        System.out.println("Answer 'yes' if the number is even, otherwise answer 'no'.");
-        for (int i = 0; i < 3; i++) {
-            Random rand = new Random();
-            int number = rand.nextInt(100);
-            String numberStr = String.valueOf(number);
-            String result = playGame(numberStr);
-            if (result.equals("wrong")) {
-                System.out.println("Let's try again, " + USERNAME + "!");
-                return;
-            }
-        }
-        System.out.println("Congratulations, " + USERNAME + "!");
-    }
-
-    public static String checkAnswer(String number, String userAnswer) {
+    public static String checkAnswer(int number, String userAnswer) {
         String result = null;
-        if (Integer.valueOf(number) % 2 == 0) {
+        if (number % 2 == 0) {
             if (userAnswer.equals("yes")) {
                 result = "yes";
             } else if (userAnswer.equals("no")) {
@@ -29,7 +11,7 @@ public class Even {
             } else {
                 result = "yes";
             }
-        } else if (Integer.valueOf(number) % 2 == 1) {
+        } else if (number % 2 == 1) {
             if (userAnswer.equals("no")) {
                 result = "no";
             } else if (userAnswer.equals("yes")) {
