@@ -3,9 +3,15 @@ package hexlet.code;
 import java.util.Scanner;
 import java.util.Random;
 
-import static hexlet.code.games.Even.checkAnswer;
-import static hexlet.code.games.Calc.checkAnswer;
-import static hexlet.code.games.GreatestCommonDivisor.checkAnswer;
+import static hexlet.code.games.Even.checkAnswerEven;
+import static hexlet.code.games.Even.printQuestionEven;
+import static hexlet.code.games.Calc.checkAnswerCalc;
+import static hexlet.code.games.Calc.printQuestionCalc;
+import static hexlet.code.games.GreatestCommonDivisor.checkAnswerGCD;
+import static hexlet.code.games.GreatestCommonDivisor.printQuestionGCD;
+import static hexlet.code.games.Progression.printQuestionProgression;
+import static hexlet.code.games.Progression.checkAnswerProgression;
+import static hexlet.code.games.Calc.generatorMathOperator;
 import static hexlet.code.App.USERCHOICE;
 import static hexlet.code.GlobalVar.USERNAME;
 
@@ -17,22 +23,26 @@ public class Engine {
             String operator = generatorMathOperator();
             String question = null;
             if (USERCHOICE.equals("2")) {
-                question = printQuestion(number1);
+                question = printQuestionEven(number1);
             } else if (USERCHOICE.equals("3")) {
-                question = printQuestion(number1, number2, operator);
+                question = printQuestionCalc(number1, number2, operator);
             } else if (USERCHOICE.equals("4")) {
-                question = printQuestion(number1, number2);
+                question = printQuestionGCD(number1, number2);
+            } else if (USERCHOICE.equals("5")) {
+                question = printQuestionProgression(number1);
             }
             System.out.println("Question: " + question);
             String userAnswer = getUserAnswer();
             System.out.println("Your answer: " + userAnswer);
             String answer = null;
             if (USERCHOICE.equals("2")) {
-                answer = checkAnswer(number1, userAnswer);
+                answer = checkAnswerEven(number1, userAnswer);
             } else if (USERCHOICE.equals("3")) {
-                answer = checkAnswer(number1, number2, operator);
+                answer = checkAnswerCalc(number1, number2, operator);
             } else if (USERCHOICE.equals("4")) {
-                answer = checkAnswer(number1, number2);
+                answer = checkAnswerGCD(number1, number2);
+            } else if (USERCHOICE.equals("5")) {
+                answer = checkAnswerProgression();
             }
             if (userAnswer.equals(answer)) {
                 System.out.println("Correct!");
@@ -49,31 +59,6 @@ public class Engine {
         Random rand = new Random();
         return rand.nextInt(1, 100);
     }
-    private static String generatorMathOperator() {
-        Random rand = new Random();
-        int number = rand.nextInt(3);
-        String operator = " ";
-        if (number == 0) {
-            operator = "+";
-        } else if (number == 1) {
-            operator = "-";
-        } else if (number == 2) {
-            operator = "*";
-        }
-        return operator;
-    }
-    private static String printQuestion(int number) {
-        return String.valueOf(number);
-    }
-
-    private static String printQuestion(int number1, int number2, String operator) {
-        return String.valueOf(number1) + " " + operator + " " + String.valueOf(number2);
-    }
-
-    private static String printQuestion(int number1, int number2) {
-        return String.valueOf(number1) + " " + String.valueOf(number2);
-    }
-
     private static String getUserAnswer() {
         Scanner scanner = new Scanner(System.in);
         return scanner.next();
