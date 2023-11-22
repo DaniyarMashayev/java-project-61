@@ -36,6 +36,12 @@ public class App {
             greetingUser();
             System.out.println("What number is missing in the progression?");
             playGame();
+        } else if (USERCHOICE.equals("6")) {
+            System.out.println("Your choice: " + USERCHOICE);
+            System.out.println();
+            greetingUser();
+            System.out.println("Answer 'yes' if given number is prime. Otherwise answer 'no'.");
+            playGame();
         } else if (USERCHOICE.equals("0")) {
             return;
         }
@@ -49,6 +55,7 @@ public class App {
         System.out.println("3 - Calc");
         System.out.println("4 - GCD");
         System.out.println("5 - Progression");
+        System.out.println("6 - Prime");
         System.out.println("0 - Exit");
         String choice = scanner.next();
         return choice;
