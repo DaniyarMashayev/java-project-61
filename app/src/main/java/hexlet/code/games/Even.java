@@ -1,7 +1,7 @@
 package hexlet.code.games;
 
 public class Even {
-    public static String checkAnswer(int number, String userAnswer) {
+    public static String checkAnswerEven(int number, String userAnswer) {
         String result = null;
         if (number % 2 == 0) {
             if (userAnswer.equals("yes")) {
@@ -21,5 +21,8 @@ public class Even {
             }
         }
         return result;
+    }
+    public static String printQuestionEven(int number) {
+        return String.valueOf(number);
     }
 }
