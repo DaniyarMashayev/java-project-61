@@ -15,7 +15,6 @@ public class Calc {
         return String.valueOf(resultCalc);
     }
     public static String printQuestionCalc(int number1, int number2, String operator) {
-//        String operator = generatorMathOperator();
         return String.valueOf(number1) + " " + operator + " " + String.valueOf(number2);
     }
     public static String generatorMathOperator() {
