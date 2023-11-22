@@ -7,11 +7,13 @@ import static hexlet.code.games.Even.checkAnswerEven;
 import static hexlet.code.games.Even.printQuestionEven;
 import static hexlet.code.games.Calc.checkAnswerCalc;
 import static hexlet.code.games.Calc.printQuestionCalc;
+import static hexlet.code.games.Calc.generatorMathOperator;
 import static hexlet.code.games.GreatestCommonDivisor.checkAnswerGCD;
 import static hexlet.code.games.GreatestCommonDivisor.printQuestionGCD;
 import static hexlet.code.games.Progression.printQuestionProgression;
 import static hexlet.code.games.Progression.checkAnswerProgression;
-import static hexlet.code.games.Calc.generatorMathOperator;
+import static hexlet.code.games.Prime.printQuestionPrime;
+import static hexlet.code.games.Prime.checkAnswerPrime;
 import static hexlet.code.App.USERCHOICE;
 import static hexlet.code.GlobalVar.USERNAME;
 
@@ -30,6 +32,8 @@ public class Engine {
                 question = printQuestionGCD(number1, number2);
             } else if (USERCHOICE.equals("5")) {
                 question = printQuestionProgression(number1);
+            } else if (USERCHOICE.equals("6")) {
+                question = printQuestionPrime(number1);
             }
             System.out.println("Question: " + question);
             String userAnswer = getUserAnswer();
@@ -43,6 +47,8 @@ public class Engine {
                 answer = checkAnswerGCD(number1, number2);
             } else if (USERCHOICE.equals("5")) {
                 answer = checkAnswerProgression();
+            } else if (USERCHOICE.equals("6")) {
+                answer = checkAnswerPrime();
             }
             if (userAnswer.equals(answer)) {
                 System.out.println("Correct!");
