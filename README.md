@@ -6,3 +6,4 @@ https://asciinema.org/a/xNIW7CJOkeWgd7OFWcqMEC0oe                           <!--
 https://asciinema.org/a/r0uKh4SsYz40tQTSRdeTz75Ts                           <!--Игра: Калькулятор-->
 https://asciinema.org/a/RxDgWxZtHOHPDpPlWGGnoM3AX                           <!--Игра: НОД-->
 https://asciinema.org/a/S67C9CZXztQX6lMWgPRKWThtM                           <!--Игра: Арифметическая прогрессия-->
+https://asciinema.org/a/QpwnexuePv82JWlvdN1k47lE9                           <!--Игра: Арифметическая прогрессия-->
