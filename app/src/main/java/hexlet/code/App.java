@@ -3,7 +3,7 @@ package hexlet.code;
 import java.util.Scanner;
 
 import static hexlet.code.Engine.playGame;
-import static hexlet.code.GlobalVar.USERNAME;
+import static hexlet.code.Engine.USERNAME;
 
 public class App {
     public static final String USERCHOICE = getUserChoice();
