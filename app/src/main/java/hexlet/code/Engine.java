@@ -15,9 +15,9 @@ import static hexlet.code.games.Progression.checkAnswerProgression;
 import static hexlet.code.games.Prime.printQuestionPrime;
 import static hexlet.code.games.Prime.checkAnswerPrime;
 import static hexlet.code.App.USERCHOICE;
-import static hexlet.code.GlobalVar.USERNAME;
 
 public class Engine {
+    public static final String USERNAME = getUserName();
     public static void playGame() {
         for (int i = 0; i < 3; i++) {
             int number1 = generatorNumber();
@@ -66,6 +66,10 @@ public class Engine {
         return rand.nextInt(1, 100);
     }
     private static String getUserAnswer() {
+        Scanner scanner = new Scanner(System.in);
+        return scanner.next();
+    }
+    private static String getUserName() {
         Scanner scanner = new Scanner(System.in);
         return scanner.next();
     }
