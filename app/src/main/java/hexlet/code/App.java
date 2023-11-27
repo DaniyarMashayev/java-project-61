@@ -27,20 +27,26 @@ public class App {
     }
     private static void runGames() {
         String userChoice = getUserChoice();
-        if (userChoice.equals("1")) {
-            greetingUser();
-        } else if (userChoice.equals("2")) {
-            runEven();
-        } else if (userChoice.equals("3")) {
-            runCalc();
-        } else if (userChoice.equals("4")) {
-            runGCD();
-        } else if (userChoice.equals("5")) {
-            runProgression();
-        } else if (userChoice.equals("6")) {
-            runPrime();
-        } else if (userChoice.equals("0")) {
-            return;
+        switch (userChoice) {
+            case ("1"):
+                greetingUser();
+                break;
+            case ("2"):
+                runEven();
+                break;
+            case ("3"):
+                runCalc();
+                break;
+            case ("4"):
+                runGCD();
+            case ("5"):
+                runProgression();
+                break;
+            case ("6"):
+                runPrime();
+                break;
+            default:
+                break;
         }
     }
     private static String getUserChoice() {
