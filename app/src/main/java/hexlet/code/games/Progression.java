@@ -8,7 +8,6 @@ import hexlet.code.Engine;
 import static hexlet.code.Engine.countOfRound;
 
 public class Progression {
-    public static String value = null;
 
     public static void runProgression() {
         String rules = "What number is missing in the progression?";
@@ -27,21 +26,21 @@ public class Progression {
         return questionsAndCorrectAnswers;
     }
     private static String getCorrectAnswer(int number, int step, int indexOfDots) {
-        String[] result = new String[10];
-        for (int i = 0; i < 10; i++) {
-            number = number + step;
-            result[i] = String.valueOf(number);
-        }
+        String[] result = getArrayNumbers(number, step);
         return (String) Array.get(result, indexOfDots);
     }
     private static String getAnswer(int number, int step, int indexOfDots) {
+        String[] result = getArrayNumbers(number, step);
+        result[indexOfDots] = "..";
+        return StringUtils.join(result, " ");
+    }
+    private static String[] getArrayNumbers(int number, int step) {
         String[] result = new String[10];
         for (int i = 0; i < 10; i++) {
             number = number + step;
             result[i] = String.valueOf(number);
         }
-        result[indexOfDots] = "..";
-        return StringUtils.join(result, " ");
+        return result;
     }
     private static int generatorProgressionStep() {
         Random rand = new Random();
