@@ -14,7 +14,8 @@ public class Prime {
         String[][] questionsAndCorrectAnswers = new String[countOfRound][2];
         for (int i = 0; i < countOfRound; i++) {
             int number = Engine.generatorNumber();
-            questionsAndCorrectAnswers[i][0] = String.valueOf(number);
+            String answer = String.valueOf(number);
+            questionsAndCorrectAnswers[i][0] = answer;
             questionsAndCorrectAnswers[i][1] = getCorrectAnswer(number);
         }
         return questionsAndCorrectAnswers;
