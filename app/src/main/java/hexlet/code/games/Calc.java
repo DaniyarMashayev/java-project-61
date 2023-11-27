@@ -6,7 +6,6 @@ import hexlet.code.Engine;
 import static hexlet.code.Engine.countOfRound;
 
 public class Calc {
-
     public static void runCalc() {
         String rules = "What is the result of the expression?";
         String[][] questionsAndCorrectAnswers = getQuestionsAndCorrectAnswers();

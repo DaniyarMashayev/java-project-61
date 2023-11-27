@@ -39,6 +39,7 @@ public class App {
                 break;
             case ("4"):
                 runGCD();
+                break;
             case ("5"):
                 runProgression();
                 break;

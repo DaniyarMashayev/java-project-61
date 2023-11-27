@@ -15,7 +15,7 @@ public class GreatestCommonDivisor {
         for (int i = 0; i < countOfRound; i++) {
             int number1 = Engine.generatorNumber();
             int number2 = Engine.generatorNumber();
-            questionsAndCorrectAnswers[i][0] = String.valueOf(number1) + " " + String.valueOf(number2);
+            questionsAndCorrectAnswers[i][0] = (number1) + " " + (number2);
             questionsAndCorrectAnswers[i][1] = getCorrectAnswer(number1, number2);
         }
         return questionsAndCorrectAnswers;
