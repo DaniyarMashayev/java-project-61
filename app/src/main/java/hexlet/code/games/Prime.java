@@ -1,21 +1,30 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
+import static hexlet.code.Engine.countOfRound;
+
 public class Prime {
-    public static int number;
-    public static String printQuestionPrime(int number1) {
-        number = number1;
-        return String.valueOf(number);
+    public static void runPrime() {
+        String rules = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
+        String[][] questionsAndCorrectAnswers = getQuestionsAndCorrectAnswers();
+        Engine.runEngine(rules, questionsAndCorrectAnswers);
     }
-    public static String checkAnswerPrime() {
-        String result = null;
-        if (isPrime()) {
-            result = "yes";
-        } else if (!isPrime()) {
-            result = "no";
+
+    private static String[][] getQuestionsAndCorrectAnswers() {
+        String[][] questionsAndCorrectAnswers = new String[countOfRound][2];
+        for (int i = 0; i < countOfRound; i++) {
+            int number = Engine.generatorNumber();
+            questionsAndCorrectAnswers[i][0] = String.valueOf(number);
+            questionsAndCorrectAnswers[i][1] = getCorrectAnswer(number);
         }
-        return result;
+        return questionsAndCorrectAnswers;
     }
-    private static boolean isPrime() {
+
+    private static String getCorrectAnswer(int number) {
+        return isPrime(number) ? "yes" : "no";
+    }
+
+    private static boolean isPrime(int number) {
         if (number < 2) {
             return false;
         }

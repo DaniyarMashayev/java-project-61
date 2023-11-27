@@ -4,31 +4,51 @@ import java.lang.reflect.Array;
 import java.util.Random;
 import org.apache.commons.lang3.StringUtils;
 
+import hexlet.code.Engine;
+import static hexlet.code.Engine.countOfRound;
+
 public class Progression {
     public static String value = null;
-    public static String printQuestionProgression(int number) {
-        int step = generatorProgressionStep();
-        int indexOfDots = generatorTwoDotes();
+
+    public static void runProgression() {
+        String rules = "What number is missing in the progression?";
+        String[][] questionsAndCorrectAnswers = getQuestionsAndCorrectAnswers();
+        Engine.runEngine(rules, questionsAndCorrectAnswers);
+    }
+    private static String[][] getQuestionsAndCorrectAnswers() {
+        String[][] questionsAndCorrectAnswers = new String[countOfRound][2];
+        for (int i = 0; i < countOfRound; i++) {
+            int number = Engine.generatorNumber();
+            int step = generatorProgressionStep();
+            int indexOfDots = generatorDotes();
+            questionsAndCorrectAnswers[i][0] = getAnswer(number, step, indexOfDots);
+            questionsAndCorrectAnswers[i][1] = getCorrectAnswer(number, step, indexOfDots);
+        }
+        return questionsAndCorrectAnswers;
+    }
+    private static String getCorrectAnswer(int number, int step, int indexOfDots) {
         String[] result = new String[10];
         for (int i = 0; i < 10; i++) {
             number = number + step;
             result[i] = String.valueOf(number);
         }
-        value = (String) Array.get(result, indexOfDots);
+        return (String) Array.get(result, indexOfDots);
+    }
+    private static String getAnswer(int number, int step, int indexOfDots) {
+        String[] result = new String[10];
+        for (int i = 0; i < 10; i++) {
+            number = number + step;
+            result[i] = String.valueOf(number);
+        }
         result[indexOfDots] = "..";
         return StringUtils.join(result, " ");
     }
-
-    public static String checkAnswerProgression() {
-        return value;
-    }
-
     private static int generatorProgressionStep() {
         Random rand = new Random();
         return rand.nextInt(2, 6);
     }
-    private static int generatorTwoDotes() {
+    private static int generatorDotes() {
         Random rand = new Random();
-        return rand.nextInt(3, 10);
+        return rand.nextInt(1, 10);
     }
 }

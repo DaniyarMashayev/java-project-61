@@ -1,28 +1,26 @@
 package hexlet.code.games;
 
+import hexlet.code.Engine;
+import static hexlet.code.Engine.countOfRound;
+
 public class Even {
-    public static String checkAnswerEven(int number, String userAnswer) {
-        String result = null;
-        if (number % 2 == 0) {
-            if (userAnswer.equals("yes")) {
-                result = "yes";
-            } else if (userAnswer.equals("no")) {
-                result = "yes";
-            } else {
-                result = "yes";
-            }
-        } else if (number % 2 == 1) {
-            if (userAnswer.equals("no")) {
-                result = "no";
-            } else if (userAnswer.equals("yes")) {
-                result = "no";
-            } else {
-                result = "no";
-            }
-        }
-        return result;
+    public static void runEven() {
+        String rules = "Answer 'yes' if the number is even, otherwise answer 'no'.";
+        String[][] questionsAndCorrectAnswers = getQuestionsAndCorrectAnswers();
+        Engine.runEngine(rules, questionsAndCorrectAnswers);
     }
-    public static String printQuestionEven(int number) {
-        return String.valueOf(number);
+
+    private static String[][] getQuestionsAndCorrectAnswers() {
+        String[][] questionsAndCorrectAnswers = new String[countOfRound][2];
+        for (int i = 0; i < countOfRound; i++) {
+            int number = Engine.generatorNumber();
+            questionsAndCorrectAnswers[i][0] = String.valueOf(number);
+            questionsAndCorrectAnswers[i][1] = getCorrectAnswer(number);
+        }
+        return questionsAndCorrectAnswers;
+    }
+
+    private static String getCorrectAnswer(int number) {
+        return number % 2 == 0 ? "yes" : "no";
     }
 }
