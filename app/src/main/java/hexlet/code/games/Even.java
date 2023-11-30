@@ -3,6 +3,8 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 public class Even {
+    private static final int COUNTOFROUND = 3;
+
     public static void runEven() {
         String rules = "Answer 'yes' if the number is even, otherwise answer 'no'.";
         String[][] questionsAndCorrectAnswers = getQuestionsAndCorrectAnswers();
@@ -10,9 +12,8 @@ public class Even {
     }
 
     private static String[][] getQuestionsAndCorrectAnswers() {
-        int countOfRound = 3;
-        String[][] questionsAndCorrectAnswers = new String[countOfRound][2];
-        for (int i = 0; i < countOfRound; i++) {
+        String[][] questionsAndCorrectAnswers = new String[COUNTOFROUND][2];
+        for (int i = 0; i < COUNTOFROUND; i++) {
             int number = Engine.generatorNumber();
             questionsAndCorrectAnswers[i][0] = String.valueOf(number);
             questionsAndCorrectAnswers[i][1] = getCorrectAnswer(number);

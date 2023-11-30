@@ -3,6 +3,8 @@ package hexlet.code.games;
 import hexlet.code.Engine;
 
 public class GreatestCommonDivisor {
+    private static final int COUNTOFROUND = 3;
+
     public static void runGCD() {
         String rules = "Find the greatest common divisor of given numbers.";
         String[][] questionsAndCorrectAnswers = getQuestionsAndCorrectAnswers();
@@ -10,9 +12,8 @@ public class GreatestCommonDivisor {
     }
 
     private static String[][] getQuestionsAndCorrectAnswers() {
-        int countOfRound = 3;
-        String[][] questionsAndCorrectAnswers = new String[countOfRound][2];
-        for (int i = 0; i < countOfRound; i++) {
+        String[][] questionsAndCorrectAnswers = new String[COUNTOFROUND][2];
+        for (int i = 0; i < COUNTOFROUND; i++) {
             int number1 = Engine.generatorNumber();
             int number2 = Engine.generatorNumber();
             questionsAndCorrectAnswers[i][0] = (number1) + " " + (number2);

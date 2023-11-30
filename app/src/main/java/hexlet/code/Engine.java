@@ -4,15 +4,17 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Engine {
+    private static final int COUNTOFROUND = 3;
+    private static final int GENERATORNUMBERBOUND = 100;
+
     public static void runEngine(String rules, String[][] questionsAndCorrectAnswers) {
-        int countOfRound = 3;
         System.out.println("Welcome to the Brain Games!");
         System.out.print("May I have your name? ");
         Scanner scanner = new Scanner(System.in);
         String userName = scanner.next();
         System.out.println("Hello, " + userName + "!");
         System.out.println(rules);
-        for (int i = 0; i < countOfRound; i++) {
+        for (int i = 0; i < COUNTOFROUND; i++) {
             String question = questionsAndCorrectAnswers[i][0];
             String correctAnswer = questionsAndCorrectAnswers[i][1];
             System.out.println("Question: " + question);
@@ -31,9 +33,8 @@ public class Engine {
     }
 
     public static int generatorNumber() {
-        int numberStart = 1;
-        int numberEnd = 100;
+        int origin = 1;
         Random rand = new Random();
-        return rand.nextInt(numberStart, numberEnd);
+        return rand.nextInt(origin, GENERATORNUMBERBOUND);
     }
 }

@@ -8,6 +8,9 @@ import hexlet.code.Engine;
 
 public class Progression {
     private static final int COUNTOFROUND = 3;
+    private static final int ARRAYSIZE = 10;
+    private static final int PROGRESSIONSTEPBOUND = 6;
+    private static final int DOTESBOUND = 10;
 
     public static void runProgression() {
         String rules = "What number is missing in the progression?";
@@ -39,8 +42,7 @@ public class Progression {
     }
 
     private static String[] getArrayNumbers(int number, int step) {
-        int arrayLength = 10;
-        String[] result = new String[arrayLength];
+        String[] result = new String[ARRAYSIZE];
         for (int i = 0; i < result.length; i++) {
             number = number + step;
             result[i] = String.valueOf(number);
@@ -50,15 +52,13 @@ public class Progression {
 
     private static int generatorProgressionStep() {
         int origin = 2;
-        int bound = 6;
         Random rand = new Random();
-        return rand.nextInt(origin, bound);
+        return rand.nextInt(origin, PROGRESSIONSTEPBOUND);
     }
 
     private static int generatorDotes() {
-        int start = 1;
-        int finish = 10;
+        int origin = 1;
         Random rand = new Random();
-        return rand.nextInt(start, finish);
+        return rand.nextInt(origin, DOTESBOUND);
     }
 }

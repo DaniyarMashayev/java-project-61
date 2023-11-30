@@ -5,6 +5,9 @@ import java.util.Random;
 import hexlet.code.Engine;
 
 public class Calc {
+    private static final int COUNTOFROUND = 3;
+    private static final int NUMBERGENERATOROPERATOR = 3;
+
     public static void runCalc() {
         String rules = "What is the result of the expression?";
         String[][] questionsAndCorrectAnswers = getQuestionsAndCorrectAnswers();
@@ -12,9 +15,8 @@ public class Calc {
     }
 
     private static String[][] getQuestionsAndCorrectAnswers() {
-        int countOfRound = 3;
-        String[][] questionsAndCorrectAnswers = new String[countOfRound][2];
-        for (int i = 0; i < countOfRound; i++) {
+        String[][] questionsAndCorrectAnswers = new String[COUNTOFROUND][2];
+        for (int i = 0; i < COUNTOFROUND; i++) {
             int number1 = Engine.generatorNumber();
             int number2 = Engine.generatorNumber();
             String operator = generatorMathOperator();
@@ -39,8 +41,7 @@ public class Calc {
 
     private static String generatorMathOperator() {
         Random rand = new Random();
-        int numberGeneratorOperator = 3;
-        int number = rand.nextInt(numberGeneratorOperator);
+        int number = rand.nextInt(NUMBERGENERATOROPERATOR);
         String operator = " ";
         if (number == 0) {
             operator = "+";
