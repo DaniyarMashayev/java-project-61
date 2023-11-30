@@ -9,11 +9,12 @@ import static hexlet.code.games.Progression.runProgression;
 import static hexlet.code.games.Prime.runPrime;
 
 public class App {
-    static Scanner scanner = new Scanner(System.in);
+
     public static void main(String[] args) {
         printMenu();
         runGames();
     }
+
     private static void printMenu() {
         System.out.println("Please enter the game number and press Enter");
         System.out.println("1 - Greet");
@@ -25,11 +26,17 @@ public class App {
         System.out.println("0 - Exit");
         System.out.println();
     }
+
     private static void runGames() {
-        String userChoice = getUserChoice();
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("Your choice: ");
+        String userChoice = scanner.next();
         switch (userChoice) {
             case ("1"):
-                greetingUser();
+                System.out.println("Welcome to the Brain Games!");
+                System.out.print("May I have your name? ");
+                String userName = scanner.next();
+                System.out.println("Hello, " + userName + "!");
                 break;
             case ("2"):
                 runEven();
@@ -49,16 +56,6 @@ public class App {
             default:
                 break;
         }
-    }
-    private static String getUserChoice() {
-        System.out.print("Your choice: ");
-        String userChoice = scanner.next();
-        return userChoice;
-    }
-    private static void greetingUser() {
-        System.out.println("Welcome to the Brain Games!");
-        System.out.print("May I have your name? ");
-        String userName = scanner.next();
-        System.out.println("Hello, " + userName + "!");
+        scanner.close();
     }
 }

@@ -1,7 +1,6 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
-import static hexlet.code.Engine.countOfRound;
 
 public class Prime {
     public static void runPrime() {
@@ -11,6 +10,7 @@ public class Prime {
     }
 
     private static String[][] getQuestionsAndCorrectAnswers() {
+        int countOfRound = 3;
         String[][] questionsAndCorrectAnswers = new String[countOfRound][2];
         for (int i = 0; i < countOfRound; i++) {
             int number = Engine.generatorNumber();

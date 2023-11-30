@@ -4,12 +4,13 @@ import java.util.Scanner;
 import java.util.Random;
 
 public class Engine {
-    public static int countOfRound = 3;
-    static String userName;
-    static Scanner scanner = new Scanner(System.in);
-
     public static void runEngine(String rules, String[][] questionsAndCorrectAnswers) {
-        greeting();
+        int countOfRound = 3;
+        System.out.println("Welcome to the Brain Games!");
+        System.out.print("May I have your name? ");
+        Scanner scanner = new Scanner(System.in);
+        String userName = scanner.next();
+        System.out.println("Hello, " + userName + "!");
         System.out.println(rules);
         for (int i = 0; i < countOfRound; i++) {
             String question = questionsAndCorrectAnswers[i][0];
@@ -29,15 +30,10 @@ public class Engine {
         System.out.println("Congratulations, " + userName + "!");
     }
 
-    private static void greeting() {
-        System.out.println("Welcome to the Brain Games!");
-        System.out.print("May I have your name? ");
-        userName = scanner.next();
-        System.out.println("Hello, " + userName + "!");
-    }
-
     public static int generatorNumber() {
+        int numberStart = 1;
+        int numberEnd = 100;
         Random rand = new Random();
-        return rand.nextInt(1, 100);
+        return rand.nextInt(numberStart, numberEnd);
     }
 }

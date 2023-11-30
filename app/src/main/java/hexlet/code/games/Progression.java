@@ -5,7 +5,6 @@ import java.util.Random;
 import org.apache.commons.lang3.StringUtils;
 
 import hexlet.code.Engine;
-import static hexlet.code.Engine.countOfRound;
 
 public class Progression {
 
@@ -14,7 +13,9 @@ public class Progression {
         String[][] questionsAndCorrectAnswers = getQuestionsAndCorrectAnswers();
         Engine.runEngine(rules, questionsAndCorrectAnswers);
     }
+
     private static String[][] getQuestionsAndCorrectAnswers() {
+        int countOfRound = 3;
         String[][] questionsAndCorrectAnswers = new String[countOfRound][2];
         for (int i = 0; i < countOfRound; i++) {
             int number = Engine.generatorNumber();
@@ -25,29 +26,39 @@ public class Progression {
         }
         return questionsAndCorrectAnswers;
     }
+
     private static String getCorrectAnswer(int number, int step, int indexOfDots) {
         String[] result = getArrayNumbers(number, step);
         return (String) Array.get(result, indexOfDots);
     }
+
     private static String getAnswer(int number, int step, int indexOfDots) {
         String[] result = getArrayNumbers(number, step);
         result[indexOfDots] = "..";
         return StringUtils.join(result, " ");
     }
+
     private static String[] getArrayNumbers(int number, int step) {
-        String[] result = new String[10];
-        for (int i = 0; i < 10; i++) {
+        int arraySize = 10;
+        String[] result = new String[arraySize];
+        for (int i = 0; i < result.length; i++) {
             number = number + step;
             result[i] = String.valueOf(number);
         }
         return result;
     }
+
     private static int generatorProgressionStep() {
+        int progressionNumberstart = 2;
+        int progressionNumberfinish = 6;
         Random rand = new Random();
-        return rand.nextInt(2, 6);
+        return rand.nextInt(progressionNumberstart, progressionNumberfinish);
     }
+
     private static int generatorDotes() {
+        int start = 1;
+        int finish = 10;
         Random rand = new Random();
-        return rand.nextInt(1, 10);
+        return rand.nextInt(start, finish);
     }
 }

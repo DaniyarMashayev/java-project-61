@@ -3,7 +3,6 @@ package hexlet.code.games;
 import java.util.Random;
 
 import hexlet.code.Engine;
-import static hexlet.code.Engine.countOfRound;
 
 public class Calc {
     public static void runCalc() {
@@ -13,6 +12,7 @@ public class Calc {
     }
 
     private static String[][] getQuestionsAndCorrectAnswers() {
+        int countOfRound = 3;
         String[][] questionsAndCorrectAnswers = new String[countOfRound][2];
         for (int i = 0; i < countOfRound; i++) {
             int number1 = Engine.generatorNumber();
@@ -39,7 +39,8 @@ public class Calc {
 
     private static String generatorMathOperator() {
         Random rand = new Random();
-        int number = rand.nextInt(3);
+        int numberGeneratorOperator = 3;
+        int number = rand.nextInt(numberGeneratorOperator);
         String operator = " ";
         if (number == 0) {
             operator = "+";
