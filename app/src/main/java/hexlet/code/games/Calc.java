@@ -3,53 +3,50 @@ package hexlet.code.games;
 import java.util.Random;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
+import static hexlet.code.Engine.COUNTOFROUND;
 
 public class Calc {
-    private static final int COUNTOFROUND = 3;
-    private static final int NUMBERGENERATOROPERATOR = 3;
+    private static final String GAMERULES = "What is the result of the expression?";
+    private static final int OPERATORGENERATORNUMBER = 3;
 
     public static void runCalc() {
-        String rules = "What is the result of the expression?";
         String[][] questionsAndCorrectAnswers = getQuestionsAndCorrectAnswers();
-        Engine.runEngine(rules, questionsAndCorrectAnswers);
+        Engine.runEngine(GAMERULES, questionsAndCorrectAnswers);
     }
 
     private static String[][] getQuestionsAndCorrectAnswers() {
         String[][] questionsAndCorrectAnswers = new String[COUNTOFROUND][2];
         for (int i = 0; i < COUNTOFROUND; i++) {
-            int number1 = Engine.generatorNumber();
-            int number2 = Engine.generatorNumber();
+            int number1 = Utils.generatorNumber();
+            int number2 = Utils.generatorNumber();
             String operator = generatorMathOperator();
-            questionsAndCorrectAnswers[i][0] = String.valueOf(number1) + " "
-                    + operator + " " + String.valueOf(number2);
-            questionsAndCorrectAnswers[i][1] = getCorrectAnswer(number1, number2, operator);
+            String question = String.valueOf(number1) + " " + operator + " " + String.valueOf(number2);
+            String correctAnswer = String.valueOf(calculate(number1, number2, operator));
+            questionsAndCorrectAnswers[i][0] = question;
+            questionsAndCorrectAnswers[i][1] = correctAnswer;
         }
         return questionsAndCorrectAnswers;
     }
 
-    private static String getCorrectAnswer(int number1, int number2, String operator) {
-        int correctAnswer = 0;
-        if (operator.equals("+")) {
-            correctAnswer = number1 + number2;
-        } else if (operator.equals("-")) {
-            correctAnswer = number1 - number2;
-        } else if (operator.equals("*")) {
-            correctAnswer = number1 * number2;
+    private static int calculate(int number1, int number2, String operator) {
+        switch (operator) {
+            case "+":
+                return number1 + number2;
+            case "-":
+                return number1 - number2;
+            case "*":
+                return number1 * number2;
+            default:
+                System.out.println("Wrong calculation");
+                return 0;
         }
-        return String.valueOf(correctAnswer);
     }
 
     private static String generatorMathOperator() {
-        Random rand = new Random();
-        int number = rand.nextInt(NUMBERGENERATOROPERATOR);
-        String operator = " ";
-        if (number == 0) {
-            operator = "+";
-        } else if (number == 1) {
-            operator = "-";
-        } else if (number == 2) {
-            operator = "*";
-        }
-        return operator;
+        Random random = new Random();
+        int indexOfArray = random.nextInt(OPERATORGENERATORNUMBER);
+        String[] arrayOfOperators = {"+", "-", "*"};
+        return arrayOfOperators[indexOfArray];
     }
 }
