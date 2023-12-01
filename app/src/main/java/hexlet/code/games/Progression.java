@@ -5,47 +5,54 @@ import java.util.Random;
 import org.apache.commons.lang3.StringUtils;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
+import static hexlet.code.Engine.COUNTOFROUND;
 
 public class Progression {
-    private static final int COUNTOFROUND = 3;
+    private static final String GAMERULES = "What number is missing in the progression?";
     private static final int ARRAYSIZE = 10;
     private static final int PROGRESSIONSTEPBOUND = 6;
     private static final int DOTESBOUND = 10;
 
     public static void runProgression() {
-        String rules = "What number is missing in the progression?";
         String[][] questionsAndCorrectAnswers = getQuestionsAndCorrectAnswers();
-        Engine.runEngine(rules, questionsAndCorrectAnswers);
+        Engine.runEngine(GAMERULES, questionsAndCorrectAnswers);
     }
 
     private static String[][] getQuestionsAndCorrectAnswers() {
         String[][] questionsAndCorrectAnswers = new String[COUNTOFROUND][2];
         for (int i = 0; i < COUNTOFROUND; i++) {
-            int number = Engine.generatorNumber();
+            int number = Utils.generatorNumber();
             int step = generatorProgressionStep();
             int indexOfDots = generatorDotes();
-            questionsAndCorrectAnswers[i][0] = getAnswer(number, step, indexOfDots);
-            questionsAndCorrectAnswers[i][1] = getCorrectAnswer(number, step, indexOfDots);
+            String question = getAnswer(number, step, indexOfDots);
+            int correctAnswer = getCorrectAnswer(number, step, indexOfDots);
+            questionsAndCorrectAnswers[i][0] = question;
+            questionsAndCorrectAnswers[i][1] = String.valueOf(correctAnswer);
         }
         return questionsAndCorrectAnswers;
     }
 
-    private static String getCorrectAnswer(int number, int step, int indexOfDots) {
-        String[] result = getArrayNumbers(number, step);
-        return (String) Array.get(result, indexOfDots);
+    private static int getCorrectAnswer(int number, int step, int indexOfDots) {
+        int[] result = getArrayOfNumbers(number, step);
+        return (int) Array.get(result, indexOfDots);
     }
 
     private static String getAnswer(int number, int step, int indexOfDots) {
-        String[] result = getArrayNumbers(number, step);
+        int[] arrayNumber = getArrayOfNumbers(number, step);
+        String[] result = new String[arrayNumber.length];
+        for (int i = 0; i < arrayNumber.length; i++) {
+            result[i] = String.valueOf(arrayNumber[i]);
+        }
         result[indexOfDots] = "..";
         return StringUtils.join(result, " ");
     }
 
-    private static String[] getArrayNumbers(int number, int step) {
-        String[] result = new String[ARRAYSIZE];
+    private static int[] getArrayOfNumbers(int number, int step) {
+        int[] result = new int[ARRAYSIZE];
         for (int i = 0; i < result.length; i++) {
             number = number + step;
-            result[i] = String.valueOf(number);
+            result[i] = number;
         }
         return result;
     }
