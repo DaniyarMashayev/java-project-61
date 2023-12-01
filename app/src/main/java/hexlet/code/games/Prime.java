@@ -1,23 +1,25 @@
 package hexlet.code.games;
 
 import hexlet.code.Engine;
+import hexlet.code.Utils;
+import static hexlet.code.Engine.COUNTOFROUND;
 
 public class Prime {
-    private static final int COUNTOFROUND = 3;
+    private static final String GAMERULES = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
 
     public static void runPrime() {
-        String rules = "Answer 'yes' if given number is prime. Otherwise answer 'no'.";
         String[][] questionsAndCorrectAnswers = getQuestionsAndCorrectAnswers();
-        Engine.runEngine(rules, questionsAndCorrectAnswers);
+        Engine.runEngine(GAMERULES, questionsAndCorrectAnswers);
     }
 
     private static String[][] getQuestionsAndCorrectAnswers() {
         String[][] questionsAndCorrectAnswers = new String[COUNTOFROUND][2];
         for (int i = 0; i < COUNTOFROUND; i++) {
-            int number = Engine.generatorNumber();
+            int number = Utils.generatorNumber();
             String answer = String.valueOf(number);
+            String correctAnswer = getCorrectAnswer(number);
             questionsAndCorrectAnswers[i][0] = answer;
-            questionsAndCorrectAnswers[i][1] = getCorrectAnswer(number);
+            questionsAndCorrectAnswers[i][1] = correctAnswer;
         }
         return questionsAndCorrectAnswers;
     }
