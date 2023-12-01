@@ -1,11 +1,9 @@
 package hexlet.code;
 
 import java.util.Scanner;
-import java.util.Random;
 
 public class Engine {
-    private static final int COUNTOFROUND = 3;
-    private static final int GENERATORNUMBERBOUND = 100;
+    public static final int COUNTOFROUND = 3;
 
     public static void runEngine(String rules, String[][] questionsAndCorrectAnswers) {
         System.out.println("Welcome to the Brain Games!");
@@ -30,11 +28,5 @@ public class Engine {
             }
         }
         System.out.println("Congratulations, " + userName + "!");
-    }
-
-    public static int generatorNumber() {
-        int origin = 1;
-        Random rand = new Random();
-        return rand.nextInt(origin, GENERATORNUMBERBOUND);
     }
 }
