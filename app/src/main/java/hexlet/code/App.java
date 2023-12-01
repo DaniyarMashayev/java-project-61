@@ -2,6 +2,7 @@ package hexlet.code;
 
 import java.util.Scanner;
 
+import static hexlet.code.Cli.greetingUser;
 import static hexlet.code.games.Even.runEven;
 import static hexlet.code.games.Calc.runCalc;
 import static hexlet.code.games.GreatestCommonDivisor.runGCD;
@@ -33,10 +34,7 @@ public class App {
         String userChoice = scanner.next();
         switch (userChoice) {
             case ("1"):
-                System.out.println("Welcome to the Brain Games!");
-                System.out.print("May I have your name? ");
-                String userName = scanner.next();
-                System.out.println("Hello, " + userName + "!");
+                greetingUser();
                 break;
             case ("2"):
                 runEven();
