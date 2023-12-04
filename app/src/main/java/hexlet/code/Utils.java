@@ -4,7 +4,7 @@ import java.util.Random;
 
 public class Utils {
     private static final int BOUND = 100;
-    public static Random random = new Random();
+    private static Random random = new Random();
 
     public static int generatorNumber() {
         int origin = 1;
