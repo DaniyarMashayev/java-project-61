@@ -17,9 +17,9 @@ public class GreatestCommonDivisor {
         for (int i = 0; i < COUNTOFROUND; i++) {
             int number1 = Utils.generatorNumber();
             int number2 = Utils.generatorNumber();
-            String answer = (number1) + " " + (number2);
+            String question = (number1) + " " + (number2);
             String correctAnswer = String.valueOf(findGCD(number1, number2));
-            questionsAndCorrectAnswers[i][0] = answer;
+            questionsAndCorrectAnswers[i][0] = question;
             questionsAndCorrectAnswers[i][1] = correctAnswer;
         }
         return questionsAndCorrectAnswers;
