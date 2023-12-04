@@ -1,7 +1,6 @@
 package hexlet.code.games;
 
 import java.lang.reflect.Array;
-import java.util.Random;
 import org.apache.commons.lang3.StringUtils;
 
 import hexlet.code.Engine;
@@ -10,9 +9,8 @@ import static hexlet.code.Engine.COUNTOFROUND;
 
 public class Progression {
     private static final String GAMERULES = "What number is missing in the progression?";
-    private static final int ARRAYSIZE = 10;
+    private static final int ARRAYSIZEBOUND = 11;
     private static final int PROGRESSIONSTEPBOUND = 6;
-    private static final int DOTESBOUND = 10;
 
     public static void runProgression() {
         String[][] questionsAndCorrectAnswers = getQuestionsAndCorrectAnswers();
@@ -23,33 +21,33 @@ public class Progression {
         String[][] questionsAndCorrectAnswers = new String[COUNTOFROUND][2];
         for (int i = 0; i < COUNTOFROUND; i++) {
             int number = Utils.generatorNumber();
-            int step = generatorProgressionStep();
-            int indexOfDots = generatorDotes();
-            String question = getAnswer(number, step, indexOfDots);
-            int correctAnswer = getCorrectAnswer(number, step, indexOfDots);
+            int step = generateProgressionStep();
+            int arraySize = generateArraySize();
+            int[] progression = generateProgression(number, step, arraySize);
+            int indexOfDots = generateDotes(arraySize);
+            String question = generateQuestion(number, step, indexOfDots, progression);
+            int correctAnswer = generateData(number, step, indexOfDots, progression);
             questionsAndCorrectAnswers[i][0] = question;
             questionsAndCorrectAnswers[i][1] = String.valueOf(correctAnswer);
         }
         return questionsAndCorrectAnswers;
     }
 
-    private static int getCorrectAnswer(int number, int step, int indexOfDots) {
-        int[] result = getArrayOfNumbers(number, step);
-        return (int) Array.get(result, indexOfDots);
+    private static int generateData(int number, int step, int indexOfDots, int[] progression) {
+        return (int) Array.get(progression, indexOfDots);
     }
 
-    private static String getAnswer(int number, int step, int indexOfDots) {
-        int[] arrayNumber = getArrayOfNumbers(number, step);
-        String[] result = new String[arrayNumber.length];
-        for (int i = 0; i < arrayNumber.length; i++) {
-            result[i] = String.valueOf(arrayNumber[i]);
+    private static String generateQuestion(int number, int step, int indexOfDots, int[] progression) {
+        String[] result = new String[progression.length];
+        for (int i = 0; i < progression.length; i++) {
+            result[i] = String.valueOf(progression[i]);
         }
         result[indexOfDots] = "..";
         return StringUtils.join(result, " ");
     }
 
-    private static int[] getArrayOfNumbers(int number, int step) {
-        int[] result = new int[ARRAYSIZE];
+    private static int[] generateProgression(int number, int step, int arraySize) {
+        int[] result = new int[arraySize];
         for (int i = 0; i < result.length; i++) {
             number = number + step;
             result[i] = number;
@@ -57,15 +55,19 @@ public class Progression {
         return result;
     }
 
-    private static int generatorProgressionStep() {
-        int origin = 2;
-        Random rand = new Random();
-        return rand.nextInt(origin, PROGRESSIONSTEPBOUND);
+    private static int generateArraySize() {
+        int origin = 5;
+        return Utils.generatorNumber(origin, ARRAYSIZEBOUND);
     }
 
-    private static int generatorDotes() {
-        int origin = 1;
-        Random rand = new Random();
-        return rand.nextInt(origin, DOTESBOUND);
+    private static int generateProgressionStep() {
+        int origin = 2;
+        return Utils.generatorNumber(origin, PROGRESSIONSTEPBOUND);
+    }
+
+    private static int generateDotes(int arraySize) {
+        int origin = 2;
+        int dotesBound = arraySize;
+        return Utils.generatorNumber(origin, dotesBound);
     }
 }
