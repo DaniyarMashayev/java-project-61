@@ -1,14 +1,14 @@
 package hexlet.code.games;
 
-import java.util.Random;
-
 import hexlet.code.Engine;
 import hexlet.code.Utils;
 import static hexlet.code.Engine.COUNTOFROUND;
+import static hexlet.code.Utils.random;
 
 public class Calc {
     private static final String GAMERULES = "What is the result of the expression?";
     private static final int OPERATORGENERATORNUMBER = 3;
+    private static final String[] ARRAYOFOPERATORS = {"+", "-", "*"};
 
     public static void runCalc() {
         String[][] questionsAndCorrectAnswers = getQuestionsAndCorrectAnswers();
@@ -44,9 +44,7 @@ public class Calc {
     }
 
     private static String generatorMathOperator() {
-        Random random = new Random();
         int indexOfArray = random.nextInt(OPERATORGENERATORNUMBER);
-        String[] arrayOfOperators = {"+", "-", "*"};
-        return arrayOfOperators[indexOfArray];
+        return ARRAYOFOPERATORS[indexOfArray];
     }
 }
