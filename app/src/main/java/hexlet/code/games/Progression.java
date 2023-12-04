@@ -9,6 +9,7 @@ import static hexlet.code.Engine.COUNTOFROUND;
 
 public class Progression {
     private static final String GAMERULES = "What number is missing in the progression?";
+    private static final int ARRAYSIZEORIGIN = 5;
     private static final int ARRAYSIZEBOUND = 11;
     private static final int PROGRESSIONSTEPBOUND = 6;
 
@@ -56,8 +57,7 @@ public class Progression {
     }
 
     private static int generateArraySize() {
-        int origin = 5;
-        return Utils.generatorNumber(origin, ARRAYSIZEBOUND);
+        return Utils.generatorNumber(ARRAYSIZEORIGIN, ARRAYSIZEBOUND);
     }
 
     private static int generateProgressionStep() {
