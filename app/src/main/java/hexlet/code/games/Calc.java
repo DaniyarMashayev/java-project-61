@@ -9,7 +9,7 @@ import static hexlet.code.Engine.COUNTOFROUND;
 public class Calc {
     private static final String GAMERULES = "What is the result of the expression?";
     private static final int OPERATORGENERATORNUMBER = 3;
-    private static final String[] ARRAYOFOPERATORS = { "+", "-", "*" };
+    private static final String[] ARRAYOFOPERATORS = {"+", "-", "*"};
 
     public static void runCalc() {
         String[][] questionsAndCorrectAnswers = getQuestionsAndCorrectAnswers();
